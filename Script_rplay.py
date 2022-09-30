@@ -1,10 +1,10 @@
 import os
 import os.path
-import tempfile
 import shutil
-import time
-import sys
 import subprocess
+import sys
+import tempfile
+import time
 from datetime import datetime
 from distutils.dir_util import copy_tree
 
@@ -107,10 +107,10 @@ def instaladorDependencias():
 
 try:
     import pyqrcode
-    from colorama import init, Fore, Back, Style
-    from reportlab.pdfgen import canvas
+    from colorama import Back, Fore, Style, init
     from reportlab.pdfbase.pdfmetrics import registerFont
     from reportlab.pdfbase.ttfonts import TTFont
+    from reportlab.pdfgen import canvas
 except ModuleNotFoundError:
         print('Algum módulo necessário não foi encontrado. Iniciando o instalador de dependências...')
         instaladorDependencias()
@@ -119,12 +119,12 @@ temp_dir = tempfile.TemporaryDirectory()  # define uma variavel para o temp dir
 destinationOpFolder = os.getcwd()
 defaultFilesPath = destinationOpFolder + "\\CODES_EM_BRANCO\\defaults_nao_alterar"
 version = "2.0"
-modoTeste = True
+modoTeste = False
 
 init() # inicializa as cores
 
 print(Fore.GREEN + "----------------------------------------------")
-print("Script Refricode " + Fore.LIGHTBLACK_EX + version + Fore.WHITE + " -- made by " + Fore.LIGHTRED_EX + "CFRANS " + Fore.BLUE + "(2022)")
+print("Script RPlay " + Fore.LIGHTBLACK_EX + version + Fore.WHITE + " -- made by " + Fore.LIGHTRED_EX + "CFRANS " + Fore.BLUE + "(2022)")
 print(Fore.GREEN + "----------------------------------------------")
 
 if modoTeste == True:
@@ -163,7 +163,7 @@ if not os.path.exists(pastaOP):
 print("Copiando arquivos padrão...")
 copy_tree(defaultFilesPath, pastaOP)
 os.chdir(pastaOP)
-os.rename("refricode.job", "refricode_OP" + str(numeroOP) + ".job")
+os.rename("rplay.job", "rplay_OP" + str(numeroOP) + ".job")
 
 os.chdir(temp_dir.name)  # muda o current dir para o temp dir
 registerFont(TTFont('Arial-Bold', 'arialbd.ttf'))  # registra a arial bold

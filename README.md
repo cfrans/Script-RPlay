@@ -1,23 +1,25 @@
-# Script RPlay
+# Script RPlay 2.0
 
 Script feito para um serviço de um cliente específico em uma gráfica.  
 
-O script solicita a quantidade de QR Codes que o cliente deseja gerar e move toda a próxima sequência atual na pasta predefinida, junto dos arquivos necessários para a produção dos mesmos.  
+O script gera os QR Codes de acordo com a última sequência feita (conferindo o último número no arquivo `lastcode.txt`), e com a quantidade que o cliente deseja e também copia arquivos necessários para a pré impressão. 
 
-O mesmo também une todos os arquivos solicitados em um único PDF para facilitar o manuseio, e renomeia os arquivos de acordo com o número informado de Ordem de Produção.  
+O mesmo também une todos os códigos gerados em um único PDF para facilitar o manuseio, e renomeia os arquivos de acordo com o número informado de Ordem de Produção.  
+
+O script por padrão gera um log contendo a sequência gerada, o número da OP, o dia e horário e o nome do usuário da máquina.
 
 No final das contas o script é demasiadamente específico para o serviço que a gráfica faz, porém aqui está de qualquer forma por ter sido criado como um desafio e servindo de aprendizado na linguagem Python.  
 
 ### Dependências:  
-PyPDF2 (Necessária)  
-Colorama (Opcional)  
+(O script possui um instalador integrado de dependências necessárias, usando o PIP.)
+
+Reportlab  
+Colorama  
+PyQRCode  
 
 ### Inputs, opções e variáveis:  
-`changelog` - input a qualquer momento para ver o changelog.  
 `exit` - input a qualquer momento para encerrar o script.  
 
-`emptyCodesPath` - pasta em que os QR Codes gerados já estão salvos individualmente.  
-`defaultFilesPath` - pasta em que os arquivos necessários para a produção estão salvos.  
-`destinationOpFolder` - diretório em que a pasta da Ordem de Produção vai ser gerada  
+`defaultFilesPath` - pasta em que os arquivos necessários para a impressão estão salvos.  
 
-`copyOrMove` - defina 'copy' para copiar os QR Codes ou 'move' para move-los.  
+`modoTeste` - faz com que o script ignore o processo de verificação do último code, e também não crie um registro no "Log.txt".  
