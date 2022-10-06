@@ -1,5 +1,6 @@
 import os
 import os.path
+import getpass
 import shutil
 import subprocess
 import sys
@@ -35,7 +36,7 @@ def gerarPdf(content, nFinal):
 
 
 def atualizarLog(nInicial, nFinal, numeroOP):
-   computerName = os.environ['COMPUTERNAME']
+   computerName = getpass.getuser()
    timeNow = (datetime.now().strftime('%d-%m-%Y %H:%M:%S')) # pega o horário atual para salvar no log
    logFile = open("Log.txt","a")
    logFile.write(f"{nInicial} ao {nFinal}. OP{numeroOP}. {timeNow}. {computerName}. \n")
